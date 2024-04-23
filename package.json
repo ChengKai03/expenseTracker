@@ -1,0 +1,16 @@
+{
+  "name": "expense-tracker-electron",
+  "version": "1.0.0",
+  "description": "expense tracker ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "Kai Cheng",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^30.0.1",
+    "typescript": "^5.4.5"
+  }
+}
