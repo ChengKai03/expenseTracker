@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "build" : "handlebars views/partials/listItem.handlebars -f static/listItem.js",
+    "prestart" : "npm run build"
   },
   "author": "Kai Cheng",
   "license": "ISC",
   "devDependencies": {
     "electron": "^30.0.1",
+    "handlebars": "^4.7.8",
     "typescript": "^5.4.5"
   }
 }
