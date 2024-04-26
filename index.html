@@ -13,9 +13,28 @@
     <header>Expense Tracker!</header>
 
     <content id=tracker-content>
-      <span id="date">April 2024</span>
-      <span id="sub-header">Expenses</span>
+      <div id=table-info>
+        <button class=arrow><</button>
+        <span id="date">April 2024</span>
+        <button class="arrow">></button>
+      </div>
+      
+      
       <div id="expense-div">
+        <table id="expense-table">
+          <tr>
+            <th>Date</th>
+            <th>Cost</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>29</td>
+            <td>$50</td>
+            <td>Food</td>
+          </tr>
+        </table>
+
+        <span id="total-cost">Total: $</span>
       </div>
     </content>
     
