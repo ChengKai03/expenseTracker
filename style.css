@@ -1,9 +1,50 @@
-
+ body{
+  font-family:Roboto;
+  margin:0px;
+}
 
 header{
 	display: flex;
 	font-family: Roboto;
 	font-size: 32px;
+  color:#eee;
+  background-color:#212121;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin:0px;
+  align-items:center;
+}
+
+.nav{
+   margin-left:auto;
+}
+
+.nav-list{
+   list-style-type:none;
+   display:inline-block;
+   font-size:1rem;
+   align-items:left;
+   margin:0px;
+ }
+
+.nav-item{
+   display:inline-block;
+   padding:30px;
+ }
+
+ .nav-item:hover{
+   background-color:#31363F;
+ }
+
+.active{
+   background-color:#76ABAE;
+ }
+
+.brand{
+  text-decoration:none;
+  color:#fff;
+  display:inline-block;
+  justify-content:center;
+  padding:20px;
 }
 
 .arrow:hover,.arrow:focus{

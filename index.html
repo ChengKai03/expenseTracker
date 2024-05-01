@@ -3,14 +3,25 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+      script-src 'self'; 
+      font-src 'self' https://fonts.gstatic.com; 
+      style-src 'self' https://fonts.googleapis.com">
     <title>Expense Tracker</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./style.css">
   </head>
   <body>
-    <header>Expense Tracker!</header>
+    <header>
+      <a class="brand" href="./index.html">Budgeter</a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item active">View</li>
+          <li class="nav-item">Add</li>
+        </ul> 
+      </nav>
+    </header>
 
     <content id=tracker-content>
       <div id=table-info>
