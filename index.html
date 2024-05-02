@@ -9,16 +9,17 @@
       style-src 'self' https://fonts.googleapis.com">
     <title>Expense Tracker</title>
 
-   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="./index.js"></script>
   </head>
   <body>
     <header id="navbar">
       <a class="brand" href="./index.html">Budgeter</a>
       <nav class="nav">
         <ul class="nav-list">
-          <li class="nav-item active">View</li>
-          <li class="nav-item">Add</li>
+          <li class="nav-item" id="view-nav-option">View</li>
+          <li class="nav-item active" id="add-nav-option">Add</li>
         </ul> 
       </nav>
     </header>
@@ -100,28 +101,5 @@
       </div>
 
     </content>
-    
-
-    <div id="modal-backdrop" class="hidden"></div>
-    <div id="add-expense-modal" class=hidden>
-      <div class="modal-dialog">
-
-      <div class="modal-header">
-        <h3>Add an expense</h3>
-        <button type="button" id="modal-close" class="modal-hide-button">x</button>
-      </div>
-
-      <div class="modal-body">
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="modal-cancel" class="modal-hide-button action-button">Cancel</button>
-        <button type="button" id="modal-accept" class="action-button">Create Post</button>
-      </div>
-
-    </div>
-
-
   </body>
 </html>
