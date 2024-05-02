@@ -98,8 +98,6 @@ tr:nth-child(even) {
    height:375px;
    width: 375px;
    align-items:center;
-   overflow:hidden;
-   overflow-y:scroll;
  }
 
 
