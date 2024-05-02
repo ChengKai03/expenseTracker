@@ -134,10 +134,13 @@ tr:nth-child(even) {
 	display: none;
 }
 
-.user-input{
+.expense-input-container{
+   display:flex;
+   padding:5px;
+   align-items:center;
+ }
+
+.input-element{
    padding:5px;
  }
 
-.input-field{
-   text-align:end;
- }
