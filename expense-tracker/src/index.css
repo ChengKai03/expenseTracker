@@ -1,12 +1,26 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
  body{
   font-family:Roboto;
   margin:0px;
 }
 
 header{
-	display: flex;
-	font-family: Roboto;
-	font-size: 32px;
+  display: flex;
+  font-family: Roboto;
+  font-size: 32px;
   color:#eee;
   background-color:#212121;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -52,17 +66,17 @@ header{
 
 .arrow {
   right: 10px;
-	bottom: 10px;
- 	height: 40px;
-	width: 40px;
-	border-radius: 33px;
-	font-size: 20px;
+  bottom: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 33px;
+  font-size: 20px;
 }
 
 
 .arrow:hover,.arrow:focus{
-	border-radius: 33px;
-	font-size: 20px;
+  border-radius: 33px;
+  font-size: 20px;
   background:#76ABAE;
 }
 
@@ -83,11 +97,11 @@ tr:nth-child(even) {
 
 
 #tracker-content{
-	padding: 16px;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .panel{
@@ -107,13 +121,13 @@ tr:nth-child(even) {
 }
 
 #date{
-	padding: 10px;
-	font-size: 30px;
+  padding: 10px;
+  font-size: 30px;
 }
 
 #expense-table{
   padding: 10px;
-	width: 100%;
+  width: 100%;
   height:300px;
   overflow:hidden;
   overflow-y:scroll;
@@ -122,8 +136,8 @@ tr:nth-child(even) {
 }
 
 #expense-div{
-	display: inline-flex;
-	flex-direction: column;
+  display: inline-flex;
+  flex-direction: column;
   width: 300px;
   height:300px;
   overflow:hidden;
@@ -131,7 +145,7 @@ tr:nth-child(even) {
 }
 
 .hidden {
-	display: none;
+  display: none;
 }
 
 .expense-input-container{
