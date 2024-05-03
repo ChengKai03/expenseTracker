@@ -17,6 +17,7 @@ code {
   margin:0px;
 }
 
+
 header{
   display: flex;
   font-family: Roboto;
@@ -47,6 +48,14 @@ header{
 
  .nav-item:hover{
    background-color:#31363F;
+ }
+
+ .nav-item-text{
+  font-family: inherit;
+  text-decoration: inherit;
+  color:inherit;
+  padding-top: 30px;
+  padding-bottom:30px;
  }
 
 .active{

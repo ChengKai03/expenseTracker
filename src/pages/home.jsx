@@ -1,6 +1,7 @@
 import Navbar from '../components/navbar.jsx'
 import Panel from '../components/panel.jsx'
 
+
 export default function Home(){
     return(
         <>
