@@ -1,5 +1,5 @@
 import Button from "./button";
-
+import { useState } from "react";
 
 
 function createData(date, cost, description) {
@@ -23,22 +23,49 @@ const expenses = [
 
 
 export default function ExpenseTable(){
+  const months =  ["January", "February", "March", "April", "May", "June", 
+  "July", "August", "September", "October", "November", "December" ]
+
   let date = new Date()
-  let month = date.toLocaleString('default', { month: 'long' }) 
-  let year = date.getFullYear() 
+//   let month = date.getMonth() % 12
+//   let year = date.getFullYear() 
 
-  let dateObj = {month: month, year: year}
+  const [month, setMonth] = useState(date.getMonth())
+  const [year, setYear] = useState(date.getFullYear())
+  const [monthString, setMonthString] = useState(months[month])
 
-  function handleClick(dateObj) {
-	alert(dateObj.month);
+//   let dateObj = {month: month, year: year}
+
+  function subtractMonth() {
+	if (month === 0){
+		const newYear = year - 1
+		setYear(newYear)
+	}
+
+	const newMonth = (((month - 1) % 12) + 12) % 12
+	const newMonthString = months[newMonth]
+	setMonth(newMonth)
+	setMonthString(newMonthString)
+	// alert("clicked")
+  }
+
+  function addMonth() {
+	if (month === 11){
+		const newYear = year + 1
+		setYear(newYear)
+	}
+	const newMonth = (((month + 1) % 12) + 12) % 12
+	const newMonthString = months[newMonth]
+	setMonth(newMonth)
+	setMonthString(newMonthString)
   }
 
   return(
 		<>
 			<div id="table-info">
-			<Button className="arrow" onClick={ () => handleClick(dateObj) }>-</Button>
-			<span id="date">{ dateObj.month } { dateObj.year }</span>
-			<Button className="arrow" onClick={ () => handleClick(dateObj) }>+</Button>
+			<button className="arrow" onClick={ subtractMonth }>-</button>
+			<span id="date">{ monthString } { year }</span>
+			<button className="arrow" onClick={ addMonth }>+</button>
 			</div>
 			<div id="expense-div">
 			<table>

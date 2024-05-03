@@ -131,7 +131,10 @@ tr:nth-child(even) {
 
 #date{
   padding: 10px;
-  font-size: 30px;
+  font-size: 25px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
 }
 
 #expense-table{
