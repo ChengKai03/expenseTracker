@@ -1,3 +1,4 @@
+import Button from "./button";
 
 
 
@@ -21,14 +22,23 @@ const expenses = [
 ]
 
 
-
 export default function ExpenseTable(){
-	return(
+  let date = new Date()
+  let month = date.toLocaleString('default', { month: 'long' }) 
+  let year = date.getFullYear() 
+
+  let dateObj = {month: month, year: year}
+
+  function handleClick(dateObj) {
+	alert(dateObj.month);
+  }
+
+  return(
 		<>
 			<div id="table-info">
-			<button className="arrow">-</button>
-			<span id="date">April 2024</span>
-			<button className="arrow">+</button>
+			<Button className="arrow" onClick={ () => handleClick(dateObj) }>-</Button>
+			<span id="date">{ dateObj.month } { dateObj.year }</span>
+			<Button className="arrow" onClick={ () => handleClick(dateObj) }>+</Button>
 			</div>
 			<div id="expense-div">
 			<table>

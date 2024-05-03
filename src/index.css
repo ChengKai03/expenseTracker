@@ -83,7 +83,7 @@ header{
 }
 
 
-.arrow:hover,.arrow:focus{
+.arrow:hover{
   border-radius: 33px;
   font-size: 20px;
   background:#76ABAE;
