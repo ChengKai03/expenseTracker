@@ -1,5 +1,5 @@
 import ExpenseTable from './table.jsx'
-import EntryField from './entry.jsx'
+import Entryfield from './entryfield.jsx'
 import Breakdown from './breakdown.jsx'
 
 
@@ -12,6 +12,9 @@ export default function Panel({toShow}) {
   }
   else if (toShow === 1){
     content = <Breakdown/>;
+  }
+  else if (toShow === 2){
+    content = <Entryfield/>;
   }
 
   return(
