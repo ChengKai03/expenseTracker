@@ -3,6 +3,8 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('node:path')
+const expensesDB = require("./databases/expensesManager")
+
 
 const createWindow = () => {
   // Create the browser window.
@@ -53,7 +55,10 @@ app.on('window-all-closed', () => {
 // code. You can also put them in separate files and require them here.
 
 ipcMain.handle('get-data', async (event, newMonth, newYear)=>{
-  return newMonth + " " + newYear
+
+  const fetchData = expensesDB.readAllExpenses()
+  console.log(fetchData)
+  return fetchData
 })
 
 
