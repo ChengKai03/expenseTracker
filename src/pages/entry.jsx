@@ -5,11 +5,11 @@ export default function Entry(){
     return(
         <>
             <Navbar/>
-            <content id="tracker-content">
+            <div id="tracker-content">
                 <Panel toShow={2}/>
 
 
-            </content>
+            </div>
         </>
         
     )

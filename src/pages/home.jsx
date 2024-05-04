@@ -6,12 +6,12 @@ export default function Home(){
     return(
         <>
             <Navbar/>
-            <content id="tracker-content">
+            <div id="tracker-content">
                 <Panel toShow={0}/>
                 <Panel toShow={1}/>
 
 
-            </content>
+            </div>
         </>
         
     )

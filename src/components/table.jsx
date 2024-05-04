@@ -1,24 +1,24 @@
 import Button from "./button";
 import { useState } from "react";
-
+const { ipcRenderer } = window.require('electron');
 
 function createData(date, cost, description) {
   return { date, cost, description };
 }
 
 const expenses = [
-	createData(28, 40, "grocery"),
-	createData(39, 50, "resteraunt"),
-	createData(28, 40, "grocery"),
-	createData(39, 50, "resteraunt"),
-	createData(28, 40, "grocery"),
-	createData(39, 50, "resteraunt"),
-	createData(28, 40, "grocery"),
-	createData(39, 50, "resteraunt"),
-	createData(28, 40, "grocery"),
-	createData(39, 50, "resteraunt"),
-	createData(28, 40, "grocery"),
-	createData(39, 50, "resteraunt"),
+	createData(1, 40, "grocery"),
+	createData(2, 50, "resteraunt"),
+	createData(3, 40, "grocery"),
+	createData(4, 50, "resteraunt"),
+	createData(5, 40, "grocery"),
+	createData(9, 50, "resteraunt"),
+	createData(10, 40, "grocery"),
+	createData(14, 50, "resteraunt"),
+	createData(15, 40, "grocery"),
+	createData(17, 50, "resteraunt"),
+	createData(19, 40, "grocery"),
+	createData(20, 50, "resteraunt"),
 ]
 
 
@@ -50,6 +50,11 @@ export default function ExpenseTable(){
   }
 
   function addMonth() {
+
+	ipcRenderer.invoke('get-data').then((result) => {
+		alert(result)
+	})
+
 	if (month === 11){
 		const newYear = year + 1
 		setYear(newYear)
@@ -69,19 +74,24 @@ export default function ExpenseTable(){
 			</div>
 			<div id="expense-div">
 			<table>
-				<tr>
-				  <th>Date</th>
-				  <th>Cost</th>
-				  <th>Description</th>
-				</tr>
-	
-				{expenses.map((expense) =>(
+				<thead>
 					<tr>
-					  <td>{ expense.date }</td>
-					  <td>${ expense.cost} </td>
-					  <td>{ expense.description }</td>
+						<th>Date</th>
+						<th>Cost</th>
+						<th>Description</th>
 					</tr>
-				))}
+				</thead>
+				<tbody>
+
+		
+					{expenses.map((expense) =>(
+						<tr>
+						<td>{ expense.date }</td>
+						<td>${ expense.cost} </td>
+						<td>{ expense.description }</td>
+						</tr>
+					))}
+				</tbody>
 			</table>
 			
 			</div>
