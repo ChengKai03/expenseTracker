@@ -37,8 +37,9 @@ export default function ExpenseTable(){
 //   let dateObj = {month: month, year: year}
 
   function subtractMonth() {
+	let newYear = year;
 	if (month === 0){
-		const newYear = year - 1
+		newYear = year - 1
 		setYear(newYear)
 	}
 
@@ -50,19 +51,21 @@ export default function ExpenseTable(){
   }
 
   function addMonth() {
-
-	ipcRenderer.invoke('get-data').then((result) => {
-		alert(result)
-	})
-
+	let newYear = year;
 	if (month === 11){
-		const newYear = year + 1
+		newYear = year + 1
 		setYear(newYear)
 	}
 	const newMonth = (((month + 1) % 12) + 12) % 12
 	const newMonthString = months[newMonth]
 	setMonth(newMonth)
 	setMonthString(newMonthString)
+
+	ipcRenderer.invoke('get-data', newMonth, newYear).then((result) => {
+		alert(result)
+	})
+
+
   }
 
   return(
