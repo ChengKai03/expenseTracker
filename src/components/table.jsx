@@ -26,7 +26,13 @@ export default function ExpenseTable(){
  
 
   let thisMonthExpenses = [];
-  ipcRenderer.invoke('get-data', month, year).then((result) => {
+
+  window.onload = (event) => {
+	ipcRenderer.invoke('get-data', month, year).then((result) => {
+		console.log(result)
+	})
+  }
+//   ipcRenderer.invoke('get-data', month, year).then((result) => {
 	// result.forEach(element => {
 	// // 	console.log(element)
 	// 	const row = createData(element.purchase_date, element.cost, element.description)
@@ -34,7 +40,7 @@ export default function ExpenseTable(){
 	// 	thisMonthExpenses = [row]
 	// });
 	// // console.log(result)
-  })
+//   })
 //   setExpenses(thisMonthExpenses)
 
 
@@ -51,6 +57,16 @@ export default function ExpenseTable(){
 	const newMonthString = months[newMonth]
 	setMonth(newMonth)
 	setMonthString(newMonthString)
+	ipcRenderer.invoke('get-data', newMonth, newYear).then((result) => {
+		let expensesArray = []
+		result.forEach(element => {
+			let expense = createData(element.purchase_date, element.cost, element.description)
+			expensesArray.push(expense)
+		});
+
+		console.log(expensesArray)
+		setExpenses(expensesArray)
+	})
 	// alert("clicked")
   }
 
@@ -66,7 +82,8 @@ export default function ExpenseTable(){
 	setMonthString(newMonthString)
 
 	ipcRenderer.invoke('get-data', newMonth, newYear).then((result) => {
-		alert(result)
+		console.log(result)
+		setExpenses(result)
 	})
 
 
