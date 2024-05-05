@@ -1,11 +1,11 @@
 import Button from "./button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const { ipcRenderer } = window.require('electron');
 
 function createData(date, cost, description) {
   return { date, cost, description };
 }
-
+let multiLoaded = false;
 
 
 export default function ExpenseTable(){
@@ -24,24 +24,18 @@ export default function ExpenseTable(){
   const [monthString, setMonthString] = useState(months[month])
   const [expenses, setExpenses] = useState([])
  
-
-  let thisMonthExpenses = [];
-
-  window.onload = (event) => {
+  useEffect(()=> {
 	ipcRenderer.invoke('get-data', month, year).then((result) => {
-		console.log(result)
+		let expensesArray = []
+			result.forEach(element => {
+				let expense = createData(element.purchase_date, element.cost, element.description)
+				expensesArray.push(expense)
+			});
+		setExpenses(expensesArray)
 	})
-  }
-//   ipcRenderer.invoke('get-data', month, year).then((result) => {
-	// result.forEach(element => {
-	// // 	console.log(element)
-	// 	const row = createData(element.purchase_date, element.cost, element.description)
-	// // 	console.log(row)
-	// 	thisMonthExpenses = [row]
-	// });
-	// // console.log(result)
-//   })
-//   setExpenses(thisMonthExpenses)
+  }, [])
+	
+
 
 
 //   let dateObj = {month: month, year: year}
@@ -82,8 +76,14 @@ export default function ExpenseTable(){
 	setMonthString(newMonthString)
 
 	ipcRenderer.invoke('get-data', newMonth, newYear).then((result) => {
-		console.log(result)
-		setExpenses(result)
+		let expensesArray = []
+		result.forEach(element => {
+			let expense = createData(element.purchase_date, element.cost, element.description)
+			expensesArray.push(expense)
+		});
+
+		console.log(expensesArray)
+		setExpenses(expensesArray)
 	})
 
 
@@ -107,7 +107,7 @@ export default function ExpenseTable(){
 				</thead>
 				<tbody>
 
-		
+
 					{expenses.map((expense) =>(
 						<tr>
 						<td>{ expense.date }</td>
