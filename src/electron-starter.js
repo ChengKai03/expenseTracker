@@ -56,7 +56,7 @@ app.on('window-all-closed', () => {
 
 ipcMain.handle('get-data', async (event, newMonth, newYear)=>{
 
-  const fetchData = expensesDB.readAllExpenses()
+  const fetchData = expensesDB.readMonthExpenses(newMonth, newYear)
   console.log(fetchData)
   return fetchData
 })

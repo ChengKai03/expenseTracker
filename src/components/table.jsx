@@ -6,20 +6,6 @@ function createData(date, cost, description) {
   return { date, cost, description };
 }
 
-const expenses = [
-	createData(1, 40, "grocery"),
-	createData(2, 50, "resteraunt"),
-	createData(3, 40, "grocery"),
-	createData(4, 50, "resteraunt"),
-	createData(5, 40, "grocery"),
-	createData(9, 50, "resteraunt"),
-	createData(10, 40, "grocery"),
-	createData(14, 50, "resteraunt"),
-	createData(15, 40, "grocery"),
-	createData(17, 50, "resteraunt"),
-	createData(19, 40, "grocery"),
-	createData(20, 50, "resteraunt"),
-]
 
 
 export default function ExpenseTable(){
@@ -30,9 +16,27 @@ export default function ExpenseTable(){
 //   let month = date.getMonth() % 12
 //   let year = date.getFullYear() 
 
+
+
+
   const [month, setMonth] = useState(date.getMonth())
   const [year, setYear] = useState(date.getFullYear())
   const [monthString, setMonthString] = useState(months[month])
+  const [expenses, setExpenses] = useState([])
+ 
+
+  let thisMonthExpenses = [];
+  ipcRenderer.invoke('get-data', month, year).then((result) => {
+	// result.forEach(element => {
+	// // 	console.log(element)
+	// 	const row = createData(element.purchase_date, element.cost, element.description)
+	// // 	console.log(row)
+	// 	thisMonthExpenses = [row]
+	// });
+	// // console.log(result)
+  })
+//   setExpenses(thisMonthExpenses)
+
 
 //   let dateObj = {month: month, year: year}
 
