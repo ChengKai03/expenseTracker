@@ -109,7 +109,7 @@ export default function ExpenseTable(){
 					{expenses.map((expense) =>(
 						<tr>
 						<td>{ expense.date }</td>
-						<td>${ expense.cost} </td>
+						<td>${ (Math.round(expense.cost * 100) / 100).toFixed(2) } </td>
 						<td>{ expense.description }</td>
 						</tr>
 					))}

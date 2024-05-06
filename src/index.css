@@ -169,3 +169,20 @@ tr:nth-child(even) {
 .input-element{
    padding:5px;
  }
+
+#expense-form{
+  padding: 1rem;
+  height: inherit;
+  display: inherit;
+  flex-direction: column;
+  
+}
+
+#submit-button{
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+.input-element{
+  margin-left: auto;
+}

@@ -61,5 +61,20 @@ ipcMain.handle('get-data', async (event, newMonth, newYear) =>{
   return fetchData
 })
 
+ipcMain.handle('add-data', async (event, details) => {
+  console.log(details)
+
+  const fullDate = details.date.split("-")
+  const year = Number(fullDate[0])
+  const month = Number(fullDate[1]) - 1
+  const day = Number(fullDate[2])
+  
+  const cost = Number(details.cost)
+  const description = details.description
+
+  console.log(year, month, day, cost, description)
+
+  await expensesDB.addExpense(year, month, day, cost, description)
+})
 
 

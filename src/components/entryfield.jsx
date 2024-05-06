@@ -1,4 +1,6 @@
+
 import React, { useState } from "react"
+const { ipcRenderer } = window.require('electron');
 
 
 export default function Entryfield(){
@@ -12,7 +14,7 @@ export default function Entryfield(){
   const handlechange = (event) =>{
     const name = event.target.name
     const value = event.target.value
-    console.log(name, value)
+    // console.log(name, value)
 
     setDetails((prev) =>{
       return {...prev, [name]: value}
@@ -20,16 +22,20 @@ export default function Entryfield(){
   }
   // console.log(details)
 
-  function inputDB(formData){
-    console.log(details)
+  const inputDB = (event) => {
+    //  event.preventDeafault()
+    ipcRenderer.invoke('add-data', details)
   }
+
+
+
   return( 
 
       
     <>
       <span className="heading">Enter an Expense</span>
 
-      <form onSubmit={inputDB}>
+      <form onSubmit={inputDB} id="expense-form">
         <div className="expense-input-container">
           <label htmlFor="expense-date" className="expense-label">Date</label>
           <div className="input-element">
@@ -47,10 +53,11 @@ export default function Entryfield(){
         <div className="expense-input-container">
           <label htmlFor="expense-description" className="expense-label">Description</label>
           <div className="input-element">
-            <input type="text" name="description" id="expense-input-description" className="expense-input" onChange={handlechange}/> 
+            <input type="text" name="description" id="expense-input-description" className="expense-input" onChange={handlechange}/>
           </div>         
         </div>
-        <button type="submit">Add Expense</button>
+
+        <button id="submit-button" type="submit">Add Expense</button>
       </form>
       
       
