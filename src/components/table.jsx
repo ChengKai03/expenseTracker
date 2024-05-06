@@ -110,7 +110,7 @@ export default function ExpenseTable(){
 						<tr>
 						<td>{ expense.date }</td>
 						<td>${ (Math.round(expense.cost * 100) / 100).toFixed(2) } </td>
-						<td>{ expense.description }</td>
+						<td>{ expense.description.charAt(0).toUpperCase() + expense.description.slice(1) }</td>
 						</tr>
 					))}
 				</tbody>

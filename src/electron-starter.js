@@ -70,7 +70,7 @@ ipcMain.handle('add-data', async (event, details) => {
   const day = Number(fullDate[2])
   
   const cost = Number(details.cost)
-  const description = details.description
+  const description = details.description.toLowerCase()
 
   console.log(year, month, day, cost, description)
 
