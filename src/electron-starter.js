@@ -54,9 +54,9 @@ app.on('window-all-closed', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-ipcMain.handle('get-data', async (event, newMonth, newYear)=>{
+ipcMain.handle('get-data', async (event, newMonth, newYear) =>{
 
-  const fetchData = expensesDB.readMonthExpenses(newMonth, newYear)
+  const fetchData = await expensesDB.readMonthExpenses(newMonth, newYear)
   console.log(fetchData)
   return fetchData
 })

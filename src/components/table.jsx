@@ -22,7 +22,7 @@ export default function ExpenseTable(){
   const [monthString, setMonthString] = useState(months[month])
   const [expenses, setExpenses] = useState([])
  
-  useEffect(()=> {
+  useEffect(() => {
 	ipcRenderer.invoke('get-data', month, year).then((result) => {
 		let expensesArray = []
 			result.forEach(element => {
@@ -31,7 +31,7 @@ export default function ExpenseTable(){
 			});
 		setExpenses(expensesArray)
 	})
-  }, [])
+  }, [month, year])
 	
 
 
