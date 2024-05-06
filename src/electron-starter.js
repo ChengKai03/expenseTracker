@@ -5,6 +5,11 @@ const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('node:path')
 const expensesDB = require("./databases/expensesManager")
 
+let date = {
+  month: "",
+  year: ""
+};
+
 
 const createWindow = () => {
   // Create the browser window.
@@ -55,7 +60,8 @@ app.on('window-all-closed', () => {
 // code. You can also put them in separate files and require them here.
 
 ipcMain.handle('get-data', async (event, newMonth, newYear) =>{
-
+  date = {month: newMonth, year:newYear}
+  console.log(date)
   const fetchData = await expensesDB.readMonthExpenses(newMonth, newYear)
   console.log(fetchData)
   return fetchData

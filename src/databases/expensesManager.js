@@ -24,8 +24,16 @@ const addExpense = async (year, month, day, cost, description) => {
     }
 }
 
+const getMonthSummary = async(year,month) => {
+    const query = `SELECT description, SUM(cost) AS VALUE FROM expenses
+    WHERE purchase_month = ? AND purchase_year = ?
+    GROUP BY description`
+    
+}
+
 
 module.exports = {
     readMonthExpenses,
-    addExpense
+    addExpense,
+    getMonthSummary
 }
