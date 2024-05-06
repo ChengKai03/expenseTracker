@@ -1,11 +1,9 @@
-import Button from "./button";
 import { useEffect, useState } from "react";
 const { ipcRenderer } = window.require('electron');
 
 function createData(date, cost, description) {
   return { date, cost, description };
 }
-let multiLoaded = false;
 
 
 export default function ExpenseTable(){
@@ -93,7 +91,7 @@ export default function ExpenseTable(){
 		<>
 			<div id="table-info">
 			<button className="arrow" onClick={ subtractMonth }>-</button>
-			<span id="date">{ monthString } { year }</span>
+			<span id="date" className="heading">{ monthString } { year }</span>
 			<button className="arrow" onClick={ addMonth }>+</button>
 			</div>
 			<div id="expense-div">

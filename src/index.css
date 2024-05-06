@@ -129,7 +129,7 @@ tr:nth-child(even) {
   align-items:center;
 }
 
-#date{
+.heading{
   padding: 10px;
   font-size: 25px;
   width: 200px;
@@ -169,4 +169,3 @@ tr:nth-child(even) {
 .input-element{
    padding:5px;
  }
-
