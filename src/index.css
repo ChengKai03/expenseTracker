@@ -111,6 +111,7 @@ tr:nth-child(even) {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .panel{
@@ -132,6 +133,14 @@ tr:nth-child(even) {
 .heading{
   padding: 10px;
   font-size: 25px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.sub-heading{
+  padding: 10px;
+  font-size: 20px;
   width: 200px;
   display: flex;
   justify-content: center;
@@ -185,4 +194,10 @@ tr:nth-child(even) {
 
 .input-element{
   margin-left: auto;
+}
+
+#chart{
+  padding: 10px;
+  max-height: 300px;
+  max-width: 300px;
 }

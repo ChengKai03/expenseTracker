@@ -69,8 +69,8 @@ export default function Breakdown(){
 	if(total != 0){
 		pieContent = 
 		<>
-			<Pie data={chartData}/>
-			<span id="total-cost" className="heading">Total: ${total}</span>
+			<Pie id="chart" data={chartData}/>
+			<span id="total-cost" className="sub-heading">Total: ${total}</span>
 		</>
 	}
 	else{
@@ -86,6 +86,7 @@ export default function Breakdown(){
 
 	return(
 		<>
+			<span className="heading">Month Summary</span>
 			{pieContent}
 
 			
