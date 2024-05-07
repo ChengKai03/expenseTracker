@@ -4,6 +4,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('node:path')
 const expensesDB = require("./databases/expensesManager")
+const descriptionDB = require("./databases/descManager")
 
 let date = {
   month: "",
@@ -84,14 +85,25 @@ ipcMain.handle('add-data', async (event, details) => {
   console.log(year, month, day, cost, description)
 
   await expensesDB.addExpense(year, month, day, cost, description)
+  return 
 })
 
 ipcMain.handle('month-summary', async (event) => {
-  console.log("summary of: ", date.year, date.month)
+  // console.log("summary of: ", date.year, date.month)
   const summary = await expensesDB.getMonthSummary(date.year, date.month)
   console.log(summary)
   return summary
 })
 
 
-// ipcMain.handle('')
+ipcMain.handle('get-description' , async (event) =>{
+  const descriptions = await descriptionDB.getDescriptions()
+  console.log(descriptions)
+  return descriptions
+})
+
+ipcMain.handle('add-description', async (event, newDescription) => {
+  const formatted = newDescription.toLowerCase()
+  await descriptionDB.addDescription(formatted)
+  return
+})

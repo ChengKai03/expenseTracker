@@ -18,6 +18,14 @@ export default function Entryfield(){
 
   const [value, setValue] = React.useState(null);
   const [open, toggleOpen] = React.useState(false);
+  // let descriptionOptions = [{title:'grocery'}]
+  const [descriptionOptions, setDescriptionOptions] = React.useState();
+
+  React.useEffect(() => {
+    ipcRenderer.invoke('get-description').then((result) => {
+      setDescriptionOptions(result)
+    })
+  }, [])
 
   const handleClose = () => {
     setDialogValue({
@@ -35,9 +43,10 @@ export default function Entryfield(){
     setValue({
       title: dialogValue.title,
     });
-    // alert("added")
+    ipcRenderer.invoke('add-description', dialogValue.title)
     handleClose();
   };
+  
   const [details, setDetails] = React.useState({
     date : "",
     cost : 0,
@@ -179,4 +188,3 @@ export default function Entryfield(){
   )
 }
 
-let descriptionOptions = [{title:"grocery"}]
