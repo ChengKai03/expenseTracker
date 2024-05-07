@@ -14,7 +14,9 @@ const data = {
 	  backgroundColor: [
 		'rgb(255, 99, 132)',
 		'rgb(54, 162, 235)',
-		'rgb(255, 205, 86)'
+		'rgb(255, 205, 86)',
+		'rgb(118, 171, 174)'
+		
 	  ],
 	  hoverOffset: 4
 	}]
@@ -25,7 +27,7 @@ const data = {
 export default function Breakdown(){
 
 	const [chartData, setChartData] = useState(data)
-
+	const [total, setTotal] = useState()
 	const getMonthSummary = () => {
 		let descriptions = []
 		let sums = []
@@ -45,12 +47,21 @@ export default function Breakdown(){
 			  };
 			console.log(newData)
 			setChartData(newData)
+			let runningTotal = 0;
+			sums.forEach(element => {
+				// console.log("element" ,element)
+				runningTotal += element
+			})
+			// console.log("total ",runningTotal)
+			setTotal(Math.round(runningTotal * 100) / 100
+)
 		})
+		
 	}
 	
 	useEffect(getMonthSummary, [])
 
-	ipcRenderer.on('signal-month-summary', (event, message) =>{
+	ipcRenderer.once('signal-month-summary', (event, message) =>{
 		getMonthSummary()
 	})
 
@@ -58,7 +69,7 @@ export default function Breakdown(){
 		<>
 			<Pie data={chartData}/>
 
-			<span id="total-cost" className="heading">Total: $</span>
+			<span id="total-cost" className="heading">Total: ${total}</span>
 		</>
 	)
 		
