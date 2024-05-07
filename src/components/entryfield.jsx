@@ -38,8 +38,10 @@ export default function Entryfield(){
     title: '',
   });
 
+  
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("dialog ", dialogValue)
     setValue({
       title: dialogValue.title,
     });
@@ -65,8 +67,11 @@ export default function Entryfield(){
   // console.log(details)
 
   const inputDB = (event) => {
-    //  event.preventDeafault()
-    ipcRenderer.invoke('add-data', details)
+    // event.preventDefault()
+    const combined = {...details, description: value.title}
+    // console.log("combined: ", combined)
+
+    ipcRenderer.invoke('add-data', combined)
   }
 
 

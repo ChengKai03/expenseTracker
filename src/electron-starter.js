@@ -72,7 +72,7 @@ ipcMain.handle('get-data', async (event, newMonth, newYear) =>{
 })
 
 ipcMain.handle('add-data', async (event, details) => {
-  console.log(details)
+  console.log("details: ", details)
 
   const fullDate = details.date.split("-")
   const year = Number(fullDate[0])
@@ -103,6 +103,7 @@ ipcMain.handle('get-description' , async (event) =>{
 })
 
 ipcMain.handle('add-description', async (event, newDescription) => {
+  console.log("add-description", newDescription)
   const formatted = newDescription.toLowerCase()
   await descriptionDB.addDescription(formatted)
   return
