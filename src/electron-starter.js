@@ -64,6 +64,9 @@ ipcMain.handle('get-data', async (event, newMonth, newYear) =>{
   console.log(date)
   const fetchData = await expensesDB.readMonthExpenses(newMonth, newYear)
   console.log(fetchData)
+
+  event.sender.send('signal-month-summary',"signal me back")
+
   return fetchData
 })
 
@@ -83,4 +86,12 @@ ipcMain.handle('add-data', async (event, details) => {
   await expensesDB.addExpense(year, month, day, cost, description)
 })
 
+ipcMain.handle('month-summary', async (event) => {
+  console.log("summary of: ", date.year, date.month)
+  const summary = await expensesDB.getMonthSummary(date.year, date.month)
+  console.log(summary)
+  return summary
+})
 
+
+// ipcMain.handle('')

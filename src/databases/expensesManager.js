@@ -25,9 +25,16 @@ const addExpense = async (year, month, day, cost, description) => {
 }
 
 const getMonthSummary = async(year,month) => {
-    const query = `SELECT description, SUM(cost) AS VALUE FROM expenses
-    WHERE purchase_month = ? AND purchase_year = ?
-    GROUP BY description`
+    try{
+        const query = `SELECT description, SUM(cost) AS sum FROM expenses
+        WHERE purchase_year = ? AND purchase_month = ?
+        GROUP BY description`
+        const monthSummary = db.prepare(query).all(year, month)
+        return monthSummary
+    } catch (err){
+        console.error(err)
+        throw err
+    }
     
 }
 
