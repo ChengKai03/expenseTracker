@@ -65,11 +65,30 @@ export default function Breakdown(){
 		getMonthSummary()
 	})
 
-	return(
+	let pieContent;
+	if(total != 0){
+		pieContent = 
 		<>
 			<Pie data={chartData}/>
-
 			<span id="total-cost" className="heading">Total: ${total}</span>
+		</>
+	}
+	else{
+		pieContent = <span className="heading"> No Expenses Yet</span>
+	}
+	
+	// if (chartData == []){
+	// 	pieContent = <span>hi</span>
+	// }
+	// else{
+	// 	<span className="heading">No Expenses</span>
+	// }
+
+	return(
+		<>
+			{pieContent}
+
+			
 		</>
 	)
 		
