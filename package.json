@@ -28,8 +28,9 @@
     "rebuild": "electron-rebuild -f -w better-sqlite3",
     "react-eject": "react-scripts eject",
     "electron": "electron .",
-    "dev": "ELECTRON_START_URL=http://localhost:3000 NODE_ENV=development electron .",
-    "start": "concurrently \"BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run dev\""
+    "electron-start": "ELECTRON_START_URL=http://localhost:3000 electron .",
+    "prestart" : "npm run rebuild",
+    "start": "concurrently \"BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\""
   },
   "eslintConfig": {
     "extends": [
@@ -54,7 +55,6 @@
     "concurrently": "^8.2.2",
     "electron": "^30.0.2",
     "electron-rebuild": "^3.2.9",
-    "foreman": "^3.0.1",
     "wait-on": "^7.2.0"
   }
 }
