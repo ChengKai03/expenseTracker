@@ -66,7 +66,7 @@ export default function Breakdown(){
 	})
 
 	let pieContent;
-	if(total != 0){
+	if(total !== 0){
 		pieContent = 
 		<>
 			<Pie id="chart" data={chartData}/>
