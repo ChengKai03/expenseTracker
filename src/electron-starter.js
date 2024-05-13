@@ -4,7 +4,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('node:path')
 const expensesDB = require("./databases/expensesManager")
-const descriptionDB = require("./databases/descManager")
+const descriptionDB = require("./databases/descManager");
+const isDev = require('is-dev');
 
 let date = {
   month: "",
@@ -25,11 +26,17 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js')
     }
   })
-  const startUrl = process.env.ELECTRON_START_URL || url.format({
-            pathname: path.join(__dirname, '/../build/index.html'),
-            protocol: 'file:',
-            slashes: true
-        });
+  // const startUrl = process.env.ELECTRON_START_URL || url.format({
+  //           pathname: path.join(__dirname, '/../build/index.html'),
+  //           protocol: 'file:',
+  //           slashes: true
+  //       });
+
+  const startUrl = (
+    isDev
+    ? 'http://localhost:3000'
+    : `file://${path.join(__dirname, '../build/index.html')}`
+  )
   // and load the index.html of the app.
   mainWindow.loadURL(startUrl);
 
