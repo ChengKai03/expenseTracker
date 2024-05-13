@@ -29,7 +29,7 @@
     "react-eject": "react-scripts eject",
     "electron": "electron .",
     "electron-start": "ELECTRON_START_URL=http://localhost:3000 electron .",
-    "prestart" : "npm run rebuild",
+    "prestart": "npm run rebuild",
     "start": "concurrently \"BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\""
   },
   "eslintConfig": {
@@ -52,9 +52,9 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@electron/rebuild": "^3.6.0",
     "concurrently": "^8.2.2",
     "electron": "^30.0.2",
-    "electron-rebuild": "^3.2.9",
     "wait-on": "^7.2.0"
   }
 }
